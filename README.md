@@ -2,12 +2,10 @@
 
 ## Call usage example via command line
 ```
-deno run --allow-net --allow-run https://deno.land/x/commandline_processor/usage-example.ts
+deno run --allow-net https://raw.githubusercontent.com/michael-spengler/monitoring/master/usage-example.ts
 ```
 
 ## Execute the tests
 ```
-
-deno test --reload --allow-net --allow-run https://deno.land/x/commandline_processor/test.ts
-
+deno test --allow-net https://raw.githubusercontent.com/michael-spengler/monitoring/master/test.ts
 ``` 

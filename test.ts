@@ -1,6 +1,6 @@
 import { fail } from "https://deno.land/std/testing/asserts.ts";
-import { Monitor } from "./monitor.ts";
-import { token } from "./topsecret/.env.ts";
+import { Monitor } from "https://raw.githubusercontent.com/michael-spengler/monitoring/master/monitor.ts";
+// import { token } from "./topsecret/.env.ts";
 
 const chatIdForResults = 176632339
 const everyXMinutes = 1
@@ -9,7 +9,6 @@ const urlOfAnEndPointWhichIsNotAvailable = 'http://api.open-notify.org/iss-inFiv
 
 
 Deno.test("endpoint not available", async (): Promise<void> => {
-    // const telegramBotToken = token // commented out as I should not publish my token
     let intervalID
     
     try {
@@ -23,7 +22,6 @@ Deno.test("endpoint not available", async (): Promise<void> => {
 });
 
 Deno.test("endpoint available", async (): Promise<void> => {
-    // const telegramBotToken = token // commented out as I should not publish my token
     let intervalID
     
     try {
