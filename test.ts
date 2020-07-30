@@ -1,6 +1,5 @@
-import { assertStringContains, assertEquals, fail } from "https://deno.land/std/testing/asserts.ts";
+import { fail } from "https://deno.land/std/testing/asserts.ts";
 import { Monitor } from "./monitor.ts";
-import { Helper } from "./helper.ts";
 import { token } from "./topsecret/.env.ts";
 
 const chatIdForResults = 176632339
@@ -14,7 +13,7 @@ Deno.test("endpoint not available", async (): Promise<void> => {
     let intervalID
     
     try {
-        intervalID = await Monitor.checkURLRegularly(chatIdForResults, urlOfAnEndPointWhichIsNotAvailable, everyXMinutes) // add your telegram bot token as parameter
+        intervalID = await Monitor.checkURLsRegularly(chatIdForResults, [urlOfAnEndPointWhichIsNotAvailable], everyXMinutes) // add your telegram bot token as parameter
         fail('An error was expected.')
     } catch(error) {
         // ok
@@ -28,7 +27,7 @@ Deno.test("endpoint available", async (): Promise<void> => {
     let intervalID
     
     try {
-        intervalID = await Monitor.checkURLRegularly(chatIdForResults, urlOfAnEndPointWhichIsAvailable, everyXMinutes) // add your telegram bot token as parameter
+        intervalID = await Monitor.checkURLsRegularly(chatIdForResults, [urlOfAnEndPointWhichIsAvailable], everyXMinutes) // add your telegram bot token as parameter
     } catch(error) {
         fail(`The following unexpected error occurred: ${error.message}`)
     }

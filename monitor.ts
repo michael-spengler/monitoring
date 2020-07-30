@@ -2,20 +2,18 @@ import api from 'https://deno.land/x/api/index.ts'
 
 export class Monitor {
 
-	private static urlsBeingMonitored: string[] = []
+	public static async checkURLsRegularly(chatIdForResults: number, urls: string[], everyXMinutes: number, telegramBotToken?: string): Promise<number> {
 
-	public static async checkURLRegularly(chatIdForResults: number, url: string, everyXMinutes: number, telegramBotToken?: string): Promise<number> {
+		let index = 0
 
-		if (Monitor.urlsBeingMonitored.includes(url)) {
-			throw new Error(`This url is already in the observation list: ${url}`)
-		}
-
-		this.urlsBeingMonitored.push(url)
-
-		await Monitor.getIt(chatIdForResults, url, telegramBotToken)
+		await Monitor.getIt(chatIdForResults, urls[index], telegramBotToken)
 
 		const intervalId = setInterval(() => {
-			Monitor.getIt(chatIdForResults, url, telegramBotToken)
+			index += 1
+			if (index === urls.length) {
+				index = 0
+			}
+			Monitor.getIt(chatIdForResults, urls[index], telegramBotToken)
 		}, everyXMinutes * 60 * 1000)
 
 		return intervalId
