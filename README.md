@@ -1,12 +1,10 @@
-[![deno doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/monitoring/mod.ts)
-
 <a target="__blank" href="https://brave.com/">
 <img style="text-align: center" src="https://brave.com/wp-content/uploads/2019/01/logotype-full-color.svg" alt="drawing" width="220" />
 </a>
 
 ## Usage Example for Your Code
 
-This availability monitor sends notifications via telegram if an api is not available.  
+This availability monitor sends notifications via telegram if an api / url is not available. You need to have a Telegram Bot registered via the [Telegram Botfather](https://t.me/BotFather).
 
 ```
   
