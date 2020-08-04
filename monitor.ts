@@ -1,4 +1,4 @@
-import { Request } from 'https://deno.land/x/request@1.0.0/request.ts'
+import { Request } from 'https://deno.land/x/request@1.1.0/request.ts'
 
 export class Monitor {
 
