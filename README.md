@@ -1,4 +1,6 @@
-# Telegram based Availability Monitor
+# Availability Monitor
+
+This availability monitor sends notifications via telegram if an api is not available.  
 
 ## Call usage example via command line
 ```

@@ -7,7 +7,6 @@ const everyXMinutes = 1
 const urlOfAnEndPointWhichIsAvailable = 'http://api.open-notify.org/iss-now.json'
 const urlOfAnEndPointWhichIsNotAvailable = 'http://api.open-notify.org/iss-inFiveTrillionyears.json'
 
-
 Deno.test("endpoint not available", async (): Promise<void> => {
     let intervalID
     

@@ -1,4 +1,4 @@
-import api from 'https://deno.land/x/api/index.ts'
+import { Request } from 'https://deno.land/x/request@1.0.0/request.ts'
 
 export class Monitor {
 
@@ -20,13 +20,12 @@ export class Monitor {
 	}
 
 	private static async getIt(chatIdForResults: number, url: string, telegramBotToken?: string) {
-		console.log('abc')
 
 		let result
 
 		try {
 
-			result = await api.get(url)
+			result = await Request.get(url)
 
 			if (result === undefined) {
 				Monitor.reportAnError(chatIdForResults, `unexpected response from: ${url}`, telegramBotToken)
@@ -41,7 +40,7 @@ export class Monitor {
 
 	private static async reportAnError(chatIdForResults: number, message: string, telegramBotToken?: string): Promise<void> {
 		if (telegramBotToken !== undefined) {
-			await api.get(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatIdForResults}&text=${message}`)
+			await Request.get(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatIdForResults}&text=${message}`)
 		}
 		throw new Error(message)
 	}
