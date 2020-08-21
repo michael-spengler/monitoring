@@ -14,6 +14,8 @@ or via pm2
 
 ```sh
 
+git clone https://github.com/michael-spengler/monitoring.git
+cd monitoring
 pm2 start  --interpreter="deno" --interpreter-args="run --allow-net" start-monitoring.ts
 
 ```
