@@ -1,5 +1,5 @@
 import { fail } from "https://deno.land/std/testing/asserts.ts";
-import { Monitor } from "https://raw.githubusercontent.com/michael-spengler/monitoring/master/monitor.ts";
+import { Monitor } from "https://deno.land/x/request@1.3.0/request.ts"
 // import { token } from "./topsecret/.env.ts";
 
 const chatIdForResults = 176632339
