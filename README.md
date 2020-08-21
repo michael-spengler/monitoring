@@ -16,7 +16,7 @@ or via pm2
 
 git clone https://github.com/michael-spengler/monitoring.git
 cd monitoring
-cp .env-example.ts .env.ts // then add your individual ingredients
+cp .env-example.ts .env.ts  # add your individual ingredients
 pm2 start  --interpreter="deno" --interpreter-args="run --allow-net" start-monitoring.ts
 
 ```
