@@ -6,7 +6,7 @@ This availability monitor sends notifications via telegram if an api / url is no
 
 ```sh
 
-deno run --allow-net start-monitoring.ts 176632339 http://api.open-notify.org/iss-now.json 1 yourtelegramsbottokenherekeepitsave
+deno run --allow-net start-monitoring.ts
 
 ```
 
@@ -14,16 +14,9 @@ or via pm2
 
 ```sh
 
-pm2 start  --interpreter="deno" --interpreter-args="run --allow-net" start-monitoring.ts 176632339 http://api.open-notify.org/iss-now.json 1 yourTelegramBotTokenHereKeepItSave
+pm2 start  --interpreter="deno" --interpreter-args="run --allow-net" start-monitoring.ts
 
 ```
-
-Explanation of parameters:  
-1. ChatId (receiver of downtime alerts)  
-2. URL to be monitored  
-3. every X minutes 
-4. Telegram Bot Token  
-
 
 ## Support my Open Source Contributions  
 
