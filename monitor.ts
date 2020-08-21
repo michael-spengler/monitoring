@@ -17,6 +17,14 @@ export class Monitor {
 			Monitor.getIt(chatIdForResults, urls[index], telegramBotToken)
 		}, everyXMinutes * 60 * 1000)
 
+		const getMeResult = (await Request.get(`https://api.telegram.org/bot${telegramBotToken}/getMe`)).result
+
+		const text = `Congratulations. ${getMeResult.username} is handling monitoring for you.`
+
+		log.info(text)
+
+		await Monitor.sendMessage(chatIdForResults, text, telegramBotToken, false)
+
 		return intervalId
 	}
 
@@ -29,23 +37,25 @@ export class Monitor {
 			result = await Request.get(url)
 
 			if (result === undefined) {
-				Monitor.reportAnError(chatIdForResults, `unexpected response from: ${url}`, telegramBotToken)
+				Monitor.sendMessage(chatIdForResults, `unexpected response from: ${url}`, telegramBotToken)
 			} else {
 				log.info('checked successfully')
 			}
 
 		} catch (error) {
 			console.log(error.message)
-			await Monitor.reportAnError(chatIdForResults, error.message, telegramBotToken)
+			await Monitor.sendMessage(chatIdForResults, error.message, telegramBotToken)
 		}
 
 	}
 
-	private static async reportAnError(chatIdForResults: number, message: string, telegramBotToken?: string): Promise<void> {
+	private static async sendMessage(chatIdForResults: number, message: string, telegramBotToken?: string, itIsAnErrorMessage: boolean = true): Promise<void> {
 		if (telegramBotToken !== undefined) {
 			await Request.get(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatIdForResults}&text=${message}`)
 		}
-		throw new Error(message)
-	}
+		if (itIsAnErrorMessage) {
+			throw new Error(message)
+		}
 
+	}
 }

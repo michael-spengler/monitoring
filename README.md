@@ -3,35 +3,28 @@
 
 This availability monitor sends notifications via telegram if an api / url is not available. You need to have a Telegram Bot registered via the [Telegram Botfather](https://t.me/BotFather).
 
-```
 
-import { Monitor } from "https://deno.land/x/moni/request.ts"
-// import { telegramBotToken } from './topsecret/.env.ts'
+```sh
 
-const chatIdForResults = 176632339
-const url = 'http://api.open-notify.org/iss-now.json'
-const everyXMinutes = 1
-// commenting the following line as I should not publish my telegramBotToken :) 
-// await Monitor.checkURLsRegularly(chatIdForResults, [url], everyXMinutes, telegramBotToken)   
+deno run --allow-net start-monitoring.ts 176632339 http://api.open-notify.org/iss-now.json 1 yourtelegramsbottokenherekeepitsave
 
 ```
 
+or via pm2
 
+```sh
 
-## Call usage example via command line
+pm2 start  --interpreter="deno" --interpreter-args="run --allow-net" start-monitoring.ts 176632339 http://api.open-notify.org/iss-now.json 1 yourTelegramBotTokenHereKeepItSave
+
 ```
-  
-deno run --allow-net https://deno.land/x/monitoring/usage-example.ts
-  
-```
 
-## Execute the tests
-```  
+Explanation of parameters:  
+1. ChatId (receiver of downtime alerts)  
+2. URL to be monitored  
+3. every X minutes 
+4. Telegram Bot Token  
 
-deno test --allow-net https://deno.land/x/monitoring@1.2.0/test.ts
-  
-``` 
-  
+
 ## Support my Open Source Contributions  
 
 If you like my work please consider downloading the brave browser via my promotion link: [https://brave.com/fan464](https://brave.com/fan464).  
