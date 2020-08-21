@@ -1,0 +1,1 @@
+pm2 start  --interpreter="deno" --interpreter-args="run --allow-net --allow-read" start-monitoring.ts 176632339 http://api.open-notify.org/iss-now.json 1 yourtelegramsbottokenherekeepitsave

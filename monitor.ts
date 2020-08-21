@@ -1,4 +1,5 @@
 import { Request } from 'https://deno.land/x/request@1.1.0/request.ts'
+import * as log from "https://deno.land/std/log/mod.ts";
 
 export class Monitor {
 
@@ -29,6 +30,8 @@ export class Monitor {
 
 			if (result === undefined) {
 				Monitor.reportAnError(chatIdForResults, `unexpected response from: ${url}`, telegramBotToken)
+			} else {
+				log.info('checked successfully')
 			}
 
 		} catch (error) {

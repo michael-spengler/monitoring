@@ -5,7 +5,7 @@ This availability monitor sends notifications via telegram if an api / url is no
 
 ```
 
-import { Monitor } from "https://deno.land/x/request@1.3.0/request.ts"
+import { Monitor } from "https://deno.land/x/moni/request.ts"
 // import { telegramBotToken } from './topsecret/.env.ts'
 
 const chatIdForResults = 176632339
