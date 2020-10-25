@@ -1,0 +1,10 @@
+{
+                                "name": "monitoring",
+                                "description": "🦕    Module for Availability Monitoring - Sending Notifications via Telegram.",
+                                "homepage": "https://github.com/michael-spengler/monitoring",
+                                "files": [
+                                  "./**/*.ts",
+                                  "README.md"
+                                ],
+                                "entry": "./mod.ts"
+                              }
